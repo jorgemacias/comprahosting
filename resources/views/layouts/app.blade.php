@@ -25,6 +25,8 @@
     <script src="<?= asset('assets/libs/dhtmlx/grid.js')?>" ></script>
 
     <link rel="stylesheet" href="<?= asset('assets/libs/dhtmlx/grid.css')?>">
+    <link rel="stylesheet" href="<?= asset('assets/libs/dhtmlx/suite.min.css')?>">
+    <link rel="stylesheet" href="<?= asset('assets/libs/dhtmlx/index.css')?>">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">

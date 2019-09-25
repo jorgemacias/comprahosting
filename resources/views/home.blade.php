@@ -14,9 +14,13 @@
                         </div>
                     @endif
 
-                    <div id="gridbox" style="width:300px;height:400px;"></div>  
+                    <section class="dhx_sample-container">
+                    
+                        <div class="dhx_sample-container__widget" id="grid"></div>
+                    
+                </section>
                     <script>
-                    var grid = new dhx.Grid("gridbox", {
+                    var grid = new dhx.Grid("grid", {
                 columns: [
                     { width: 50, id: "Cliente", header: [{ text: "Cliente" }] },
                     
