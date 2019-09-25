@@ -20,3 +20,4 @@ Auth::routes();
 Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/clientes/data', 'ClientesController@data')->name('clientes.data');

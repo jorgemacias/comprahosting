@@ -14,7 +14,18 @@
                         </div>
                     @endif
 
-                    You are logged in!
+                    <div id="gridbox" style="width:300px;height:400px;"></div>  
+                    <script>
+                    var grid = new dhx.Grid("gridbox", {
+                columns: [
+                    { width: 50, id: "Cliente", header: [{ text: "Cliente" }] },
+                    
+                ]
+            });
+            grid.data.load("<?= url('clientes/data')?>").then(function(){
+            // alert('sas')
+            });
+            </script>
                 </div>
             </div>
         </div>
