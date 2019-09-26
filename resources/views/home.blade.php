@@ -13,26 +13,59 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
-                    <section class="dhx_sample-container">
-                    
-                        <div class="dhx_sample-container__widget" id="grid"></div>
-                    
-                </section>
-                    <script>
-                    var grid = new dhx.Grid("grid", {
-                columns: [
-                    { width: 50, id: "Cliente", header: [{ text: "Cliente" }] },
-                    
-                ]
-            });
-            grid.data.load("<?= url('clientes/data')?>").then(function(){
-            // alert('sas')
-            });
-            </script>
+                    <div id="grid"></div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<script>
+    $(function() {
+        $("#grid").kendoGrid({
+            toolbar: [
+                { name: "custom",text:"Agregar nuevo" },
+            ],
+          dataSource: {   
+            transport: {   
+              read: {
+                url: "<?= url('clientes/data')?>",
+                // data: {
+                //   tags: "nature",
+                //   format: "json"
+                // },
+                dataType: "json", // "jsonp" is required for cross-domain requests; use "json" for same-domain requests
+                // jsonp: "jsoncallback",
+              }
+            },
+            schema: {
+              data: "data",
+              model: {
+                fields: {
+                  Cliente: {type: "string"}
+                }
+              }
+            }
+          },
+          columns: [
+            {field: "Cliente", title: "Clientes"},
+            { command: { text: "Editar", click: Editar }, title: " ", width: "180px" },
+            { command: { text: "Borrar", click: Borrar }, title: " ", width: "180px" }
+            // {field: "published", title: "Published On"},
+            // {field: "media", title: "Image"}
+          ],
+          height: 500,
+          scrollable: true,
+          selectable: true
+        });
+
+        $(".k-grid-custom").click(function(e){
+            Modal("<?= url('clientes/form')?>","Agregar cliente","600px")
+        });
+
+      });
+      
+      function Editar(){}
+      function Borrar(){}
+        
+</script>
 @endsection

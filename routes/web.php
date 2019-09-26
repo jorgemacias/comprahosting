@@ -1,5 +1,6 @@
 <?php
-
+use App\Clientes;
+use App\Http\Resources\ClientesCollection;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,4 +21,9 @@ Auth::routes();
 Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/clientes/data', 'ClientesController@data')->name('clientes.data');
+Route::get('/clientes/data', function(){
+    return new ClientesCollection(Clientes::paginate(15));
+})->name('clientes.data');
+Route::get('/clientes/form', function(){
+    return view('clientes.form')->render();
+})->name('clientes.data');
